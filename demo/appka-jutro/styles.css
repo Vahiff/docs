@@ -1,0 +1,281 @@
+:root {
+  color-scheme: dark;
+  --bg: #081121;
+  --card: #111f36;
+  --card-border: #27416f;
+  --text: #f3f8ff;
+  --muted: #afc0df;
+  --accent: #4d89ff;
+  --accent-strong: #2f74fb;
+  --danger: #f75b71;
+  --success: #27c17d;
+  --low: #63b3ff;
+  --medium: #ffca62;
+  --high: #ff8e8e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 10% 0%, #1f3561 0%, transparent 45%),
+    radial-gradient(circle at 100% 100%, #0d1b31 0%, transparent 40%),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  padding: 1rem;
+}
+
+.app {
+  width: min(960px, 100%);
+  display: grid;
+  gap: 0.9rem;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.4rem 0.2rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.8vw, 2rem);
+}
+
+.subtitle {
+  margin: 0.3rem 0 0;
+  color: var(--muted);
+}
+
+.panel {
+  border: 1px solid var(--card-border);
+  background: color-mix(in oklab, var(--card), black 10%);
+  border-radius: 14px;
+  padding: 1rem;
+  box-shadow: 0 10px 30px rgb(0 0 0 / 24%);
+}
+
+.task-form {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.7rem;
+  align-items: end;
+}
+
+.field {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.field-inline {
+  min-width: 160px;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  border-radius: 10px;
+  border: 1px solid #3e609d;
+}
+
+input,
+select {
+  background: #0f1a2e;
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+}
+
+button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  padding: 0.63rem 0.86rem;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background: var(--accent-strong);
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #85adff;
+  outline-offset: 2px;
+}
+
+.message {
+  min-height: 1.2rem;
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.control-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chip,
+.ghost,
+.file-label {
+  background: transparent;
+  border: 1px solid #4768a8;
+  color: #d8e6ff;
+  padding: 0.5rem 0.75rem;
+}
+
+.chip.active {
+  background: #25498c;
+}
+
+.search input {
+  min-width: 220px;
+}
+
+.task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.task-item {
+  border: 1px solid #2f4a7e;
+  border-radius: 10px;
+  padding: 0.6rem 0.7rem;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 0.7rem;
+  align-items: center;
+  background: #0f1a2d;
+}
+
+.task-main {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.task-text {
+  word-break: break-word;
+}
+
+.task-item.done .task-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+.task-priority {
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  border: 1px solid #4a6091;
+}
+
+.task-priority[data-priority='low'] {
+  color: var(--low);
+}
+
+.task-priority[data-priority='medium'] {
+  color: var(--medium);
+}
+
+.task-priority[data-priority='high'] {
+  color: var(--high);
+}
+
+.task-actions {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.mini {
+  padding: 0.35rem 0.55rem;
+  font-size: 0.85rem;
+}
+
+.danger {
+  border-color: color-mix(in oklab, var(--danger), #ffffff 20%);
+  color: #ffd5db;
+}
+
+.empty {
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+}
+
+.stats {
+  margin: 0;
+  color: var(--muted);
+}
+
+.footer-panel {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+#import-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .task-form {
+    grid-template-columns: 1fr;
+  }
+
+  .search input {
+    min-width: 100%;
+  }
+
+  .task-item {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+.inline-input {
+  width: 100%;
+  max-width: 100%;
+}
