@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Планер на завтра</title>
+    <meta
+      name="description"
+      content="Готовое приложение для планирования задач на завтра: добавляй, редактируй, фильтруй и сохраняй задачи."
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app" aria-labelledby="app-title">
+      <header class="app-header">
+        <div>
+          <h1 id="app-title">🚀 Планер на завтра</h1>
+          <p class="subtitle">Финальная версия: задачи, фильтры, поиск, прогресс и экспорт.</p>
+        </div>
+      </header>
+
+      <section class="panel" aria-label="Добавление задачи">
+        <form id="task-form" class="task-form" novalidate>
+          <label class="field">
+            <span>Новая задача</span>
+            <input
+              id="task-input"
+              type="text"
+              placeholder="Например: Подготовить релиз"
+              maxlength="120"
+              required
+            />
+          </label>
+
+          <label class="field field-inline">
+            <span>Приоритет</span>
+            <select id="priority-input">
+              <option value="low">Низкий</option>
+              <option value="medium" selected>Средний</option>
+              <option value="high">Высокий</option>
+            </select>
+          </label>
+
+          <button type="submit">Добавить</button>
+        </form>
+        <p id="form-message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel controls" aria-label="Управление списком">
+        <div class="control-group" role="group" aria-label="Фильтр">
+          <button type="button" class="chip active" data-filter="all">Все</button>
+          <button type="button" class="chip" data-filter="active">Активные</button>
+          <button type="button" class="chip" data-filter="done">Выполненные</button>
+        </div>
+
+        <label class="search">
+          <span class="visually-hidden">Поиск задач</span>
+          <input id="search-input" type="search" placeholder="Поиск..." />
+        </label>
+      </section>
+
+      <section class="panel" aria-label="Список задач">
+        <ul id="task-list" class="task-list" aria-live="polite"></ul>
+        <p id="empty-state" class="empty">Пока нет задач. Добавьте первую 👇</p>
+      </section>
+
+      <section class="panel footer-panel" aria-label="Статистика и действия">
+        <p id="stats" class="stats">0 задач · 0 выполнено</p>
+        <div class="actions">
+          <button id="export-btn" type="button" class="ghost">Экспорт JSON</button>
+          <label for="import-input" class="ghost file-label">Импорт JSON</label>
+          <input id="import-input" type="file" accept="application/json" />
+          <button id="clear-done-btn" type="button" class="ghost">Удалить выполненные</button>
+          <button id="clear-all-btn" type="button" class="ghost danger">Удалить всё</button>
+        </div>
+      </section>
+    </main>
+
+    <template id="task-template">
+      <li class="task-item">
+        <label class="task-main">
+          <input type="checkbox" class="toggle" />
+          <span class="task-text"></span>
+        </label>
+        <span class="task-priority" data-priority="medium">Средний</span>
+        <div class="task-actions">
+          <button type="button" class="mini edit">Изменить</button>
+          <button type="button" class="mini danger remove">Удалить</button>
+        </div>
+      </li>
+    </template>
+
+    <script type="module" src="script.mjs"></script>
+  </body>
+</html>
